@@ -10,11 +10,13 @@ class ReadBookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book 
-        fields = '__all__'
+        #fields = '__all__'
         # depth = 1
+        exclude = ('author',)
 
 class CreateBookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book 
-        fields = '__all__'
+        #fields = '__all__'
+        exclude = ('author',)
