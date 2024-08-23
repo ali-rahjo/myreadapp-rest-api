@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from apps.book.models import Author, Tag
-
+from apps.book.models.author import Author
+from apps.book.models.tag import Tag
 
 # Author Serialzers
 class AuthorSerializer(serializers.Serializer): # <model>serializer
