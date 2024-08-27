@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from apps.book.models import Book, Author
 from apps.book.serializers import ReadBookSerializer, CreateBookSerializer
+from rest_framework.views import APIView
 
 
 # List Book
@@ -40,4 +41,31 @@ def create_book(request):
     return Response({'isbn': saved_book.isbn}, status=status.HTTP_201_CREATED)
 
     #return Response({'detail': 'Invalid request data', 'error': 'Invalid_Request'}, status=status.HTTP_400_BAD_REQUEST)
+
+class BooksView(APIView):
+    # GET
+    def get(self, request):
+        books = Book.objects.all()
+
+        # deserializations
+        data = ReadBookSerializer(books, many=True)
+
+        return Response({'data': data.data}, status=status.HTTP_200_OK)
+
+
+    def post(self, request):
+        pass
+
+    def delete(self, request):
+        pass
+
+    def gput(self, request):
+        pass
+
+    def patch (self, request):
+        pass
+
+
+
+
 
