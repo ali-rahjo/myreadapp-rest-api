@@ -10,15 +10,19 @@ DEFAULT_APP = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+ # custom apps go here
 CREATED_APP = [
     "apps.core.apps.CoreConfig",
-    "apps.reader.apps.ReaderConfig",
+    "apps.reader.apps.ReaderConfig", 
     "apps.book.apps.BookConfig",
     "apps.myread.apps.MyreadConfig",
-]  # custom apps goe here
+] 
 
-
-THIRD_PARTY_APP = ['rest_framework',]  # third party apps goe here
+# third party apps goe here
+THIRD_PARTY_APP = ['rest_framework',
+                   'rest_framework.authtoken', # create token table
+                   'dj_rest_auth',
+                   ]  
 
 INSTALLED_APPS = [*DEFAULT_APP, *CREATED_APP, *THIRD_PARTY_APP]
 
@@ -79,3 +83,11 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# set default settings for rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}

@@ -1,6 +1,8 @@
 from django.urls import path 
 from . import views 
 
+# URLs doesn't understand classes. But it understands functional based views only.
+# When using a class based view, you have to transform it into a function based view with `.as_view()`
 app_name = 'book-urls'
 urlpatterns = [
     path('author/', views.list_authors, name='list-author'),
